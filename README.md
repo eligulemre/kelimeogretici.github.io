@@ -1,0 +1,2 @@
+# kelimeogretici.github.io
+Eğitmen
