@@ -1154,26 +1154,54 @@ window.enwords = [
    "read": "rayt",
    "mean": "yazmak"
  }
-]
+];
+
 
 document.querySelector(".mainwordtop").innerText = window.enwords[0].en_key;
 document.querySelector(".mainwordbottom .s1").innerText = window.enwords[0].mean;
 document.querySelector(".mainwordbottom .s2").innerText = window.enwords[0].read;
 
-var wordcount = 0;
+var passedenwords = [];
+var wordsaraay;
+var lastarraynumber;
+// var enwordsrandom = Math.floor(Math.random() * window.enwords.length);
+
 document.querySelector(".btn1").addEventListener("click", function(){
   document.querySelector(".mainwordbottom").classList.add("active");
 });
 document.querySelector(".btn2").addEventListener("click", function(){
- wordcount++;
- document.querySelector(".mainwordbottom").classList.remove("active");
- document.querySelector(".mainwordtop").innerText = window.enwords[wordcount].en_key;
- document.querySelector(".mainwordbottom .s1").innerText = window.enwords[wordcount].mean;
- document.querySelector(".mainwordbottom .s2").innerText = window.enwords[wordcount].read;
+  enwordsrandom = Math.floor(Math.random() * window.enwords.length);
+  console.log("birinci: "+enwordsrandom);
+  if (passedenwords.indexOf(enwordsrandom) == -1) {
+    passedenwords.push(enwordsrandom);
+    wordsaraay = enwordsrandom;
+  }else {
+    if (passedenwords.length !== window.enwords.length) {
+      enwordsrandom = false;
+      while (passedenwords.indexOf(enwordsrandom) == -1) {
+        enwordsrandom = Math.floor(Math.random() * window.enwords.length);
+        if (passedenwords.indexOf(enwordsrandom) == -1) {
+          passedenwords.push(enwordsrandom);
+          wordsaraay = enwordsrandom;
+          break;
+        }else {
+          enwordsrandom = false;
+        }
+      }
+    }else {
+      // console.log("bitti");
+    }
+  }
 
- var growthHtml = '<div class="passedworditem"> <span class="s1">'+window.enwords[wordcount - 1].en_key+'</span> <span class="s2">'+window.enwords[wordcount - 1].mean+'</span> <span class="s3">'+window.enwords[wordcount - 1].read+'</span> </div>';
+ document.querySelector(".mainwordbottom").classList.remove("active");
+ document.querySelector(".mainwordtop").innerText = window.enwords[wordsaraay].en_key;
+ document.querySelector(".mainwordbottom .s1").innerText = window.enwords[wordsaraay].mean;
+ document.querySelector(".mainwordbottom .s2").innerText = window.enwords[wordsaraay].read;
+
+ var growthHtml = '<div class="passedworditem"> <span class="s1">'+window.enwords[lastarraynumber].en_key+'</span> <span class="s2">'+window.enwords[lastarraynumber].mean+'</span> <span class="s3">'+window.enwords[lastarraynumber].read+'</span> </div>';
  document.querySelector(".passedword").insertAdjacentHTML("afterbegin",growthHtml);
  // beforebegin <div>afterbegin - foo - beforeend</div> afterend
+ lastarraynumber = wordsaraay
 
 
 });
