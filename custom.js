@@ -1163,7 +1163,7 @@ document.querySelector(".mainwordbottom .s2").innerText = window.enwords[0].read
 
 var passedenwords = [];
 var wordsaraay;
-var lastarraynumber;
+var lastarraynumber = 0;
 // var enwordsrandom = Math.floor(Math.random() * window.enwords.length);
 
 document.querySelector(".btn1").addEventListener("click", function(){
@@ -1201,7 +1201,7 @@ document.querySelector(".btn2").addEventListener("click", function(){
  var growthHtml = '<div class="passedworditem"> <span class="s1">'+window.enwords[lastarraynumber].en_key+'</span> <span class="s2">'+window.enwords[lastarraynumber].mean+'</span> <span class="s3">'+window.enwords[lastarraynumber].read+'</span> </div>';
  document.querySelector(".passedword").insertAdjacentHTML("afterbegin",growthHtml);
  // beforebegin <div>afterbegin - foo - beforeend</div> afterend
- lastarraynumber = wordsaraay
+ lastarraynumber = wordsaraay;
 
 
 });
